@@ -9,11 +9,22 @@
         android:text="@string/mood_entry_header"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-    <TextView
+    <EditText
+        android:id="@+id/edit_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:id="@+id/mood_list"
-        android:text="@string/no_mood_data" />
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_word"
+        android:inputType="textAutoComplete"
+        android:textSize="18sp"
+        android:paddingTop="30dp"/>
+
+    <Button
+        android:id="@+id/button_save"
+        android:text="@string/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingTop="60dp" />
 
 </RelativeLayout>

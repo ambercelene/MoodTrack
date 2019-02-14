@@ -2,21 +2,25 @@ package com.mood.tracker;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.mood.tracker.dal.MoodViewModel;
 
 public class EntriesFragment extends Fragment {
 
+    public static final String EXTRA_REPLY = "com.mood.tracker.moodlistsql.REPLY";
+
     private MoodViewModel mMoodViewModel;
-    private TextView mMoodsListView;
 
     @Nullable
     @Override
@@ -31,31 +35,27 @@ public class EntriesFragment extends Fragment {
 
     }
 
+    // view is created, now configure event handlers
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        // get the view mood list text element
-        mMoodsListView = (TextView) getActivity().findViewById(R.id.mood_list);
+        final Button saveButton = getActivity().findViewById(R.id.button_save);
 
-        populateDb();
-
-        // bind data to text element
-        subscribeUiMoods();
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Intent replyIntent = new Intent();
+//                if (TextUtils.isEmpty(saveButton.getText())) {
+//                    getActivity().setResult(getActivity().RESULT_CANCELED, replyIntent);
+//                } else {
+//                    String word = saveButton.getText().toString();
+//                    replyIntent.putExtra(EXTRA_REPLY, word);
+//                    getActivity().setResult(getActivity().RESULT_OK, replyIntent);
+//                }
+//                getActivity().finish();
+//            }
+//        });
     }
 
-
-    private void populateDb() {
-        mMoodViewModel.createDb();
-    }
-
-    private void subscribeUiMoods() {
-        mMoodViewModel.getAffectsResult().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String result) {
-                mMoodsListView.setText(result);
-            }
-        });
-    }
 }
 
 

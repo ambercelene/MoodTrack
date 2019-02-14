@@ -12,6 +12,7 @@ The Mood Tracker can receive input from the user then visually display it. The g
 ### Domain Layer
 
 - Room
+- ViewModel
 - LiveData
 
 ### App Lifecycle

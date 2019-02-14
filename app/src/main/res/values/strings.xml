@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">MoodTrack</string>
-    <string name="title_home">Onboard here</string>
+    <string name="title_home">Home</string>
     <string name="title_entries">Entries</string>
     <string name="title_calendar">Calendar</string>
     <string name="no_mood_data">No mood data</string>
     <string name="mood_entry_header">Mood Entries</string>
+    <string name="calendar_header">Calendar</string>
+    <string name="hint_word">How you feeling?</string>
+    <string name="button_save">Save</string>
 </resources>
