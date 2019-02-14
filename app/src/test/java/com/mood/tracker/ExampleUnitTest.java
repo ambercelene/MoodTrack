@@ -1,4 +1,4 @@
-package com.example.moodtrack;
+package com.mood.tracker;
 
 import org.junit.Test;
 

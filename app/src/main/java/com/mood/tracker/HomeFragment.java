@@ -1,4 +1,4 @@
-package com.example.moodtrack;
+package com.mood.tracker;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,15 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class EntriesFragment extends Fragment {
+public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_entries, null);
+        return inflater.inflate(R.layout.fragment_home, null);
 
     }
-
-
 }
-
-
