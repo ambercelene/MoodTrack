@@ -17,16 +17,16 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-//                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class)
+                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class)
                             // To simplify the codelab, allow queries on the main thread.
                             // Don't do this on a real app! See PersistenceBasicSample for an example.
-//                            .allowMainThreadQueries()
-//                            .build();
+                            .allowMainThreadQueries()
+                            .build();
 
-                    Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class,
-                            "mood_tracker"
-                    ).build();
+//                    Room.databaseBuilder(context.getApplicationContext(),
+//                            AppDatabase.class,
+//                            "mood_tracker"
+//                    ).build();
         }
         return INSTANCE;
     }

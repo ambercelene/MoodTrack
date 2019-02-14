@@ -9,11 +9,11 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
