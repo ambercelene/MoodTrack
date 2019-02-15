@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mood.tracker.dal;
+package com.example.moodtrack.dal;
 
 import android.arch.persistence.room.TypeConverter;
 

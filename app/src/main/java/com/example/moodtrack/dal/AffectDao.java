@@ -1,4 +1,4 @@
-package com.mood.tracker.dal;
+package com.example.moodtrack.dal;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -18,22 +18,22 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 public interface AffectDao {
 
     @Query("SELECT * FROM Affect")
-    LiveData<List<Affect>> findAllAffects();
+    LiveData<List<Affect>> getMoodDataList();
 
     @Query("SELECT * FROM Affect")
-    List<Affect> findAllAffectsSync();
+    List<Affect> getMoodDataListSync();
 
     @Insert(onConflict = IGNORE)
-    void insertAffect(Affect affect);
+    void insert(Affect affect);
 
     @Update(onConflict = REPLACE)
-    void updateAffect(Affect affect);
+    void update(Affect affect);
 
     @Query("DELETE FROM Affect")
     void deleteAll();
 
     @Query("select * from Affect where id = :id")
-    Affect loadAffectById(int id);
+    Affect getAffectById(int id);
 
     // ---------------------------------------------------------------------------- //
 

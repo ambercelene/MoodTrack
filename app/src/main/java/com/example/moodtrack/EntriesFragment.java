@@ -1,20 +1,16 @@
-package com.mood.tracker;
+package com.example.moodtrack;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.mood.tracker.dal.MoodViewModel;
+import com.example.moodtrack.dal.MoodViewModel;
 
 public class EntriesFragment extends Fragment {
 

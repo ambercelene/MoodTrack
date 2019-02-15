@@ -1,11 +1,9 @@
-package com.mood.tracker.dal;
+package com.example.moodtrack.dal;
 
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -26,7 +24,7 @@ public class DatabaseInitializer {
         moodData.type = type;
         moodData.name = name;
         moodData.date = date;
-        db.affectModel().insertAffect(moodData);
+        db.affectModel().insert(moodData);
         return moodData;
     }
 

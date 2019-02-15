@@ -1,4 +1,4 @@
-package com.mood.tracker;
+package com.example.moodtrack;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mood.tracker.dal.MoodViewModel;
+import com.example.moodtrack.dal.MoodViewModel;
 
 
 public class CalendarFragment extends Fragment {

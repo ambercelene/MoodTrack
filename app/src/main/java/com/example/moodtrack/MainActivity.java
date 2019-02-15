@@ -1,4 +1,4 @@
-package com.mood.tracker;
+package com.example.moodtrack;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -1,4 +1,4 @@
-package com.mood.tracker.dal;
+package com.example.moodtrack.dal;
 
 import android.content.Context;
 

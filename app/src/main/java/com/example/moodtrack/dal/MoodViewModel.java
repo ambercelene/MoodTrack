@@ -1,4 +1,4 @@
-package com.mood.tracker.dal;
+package com.example.moodtrack.dal;
 
 import android.app.Application;
 import android.arch.core.util.Function;
@@ -38,7 +38,7 @@ public class MoodViewModel extends AndroidViewModel {
     }
 
     private void subscribeToDbChanges() {
-        LiveData<List<Affect>> affectsList = mDb.affectModel().findAllAffects();
+        LiveData<List<Affect>> affectsList = mDb.affectModel().getMoodDataList();
 
         // Instead of exposing the list of Loans, we can apply a transformation and expose Strings.
         mAffectsResult = Transformations.map(affectsList, new Function<List<Affect>, String>() {
