@@ -31,8 +31,10 @@ public class MoodViewModel extends AndroidViewModel {
         mDb = AppDatabase.getInMemoryDatabase(getApplication());
 //        mDb = AppDatabase.getDatabase(getApplication());
 
-        // Populate it with initial data
-        DbHelper.populateAsync(mDb);
+        if(mDb.affectModel().getCount() == 0) {
+            // Populate it with initial data
+            DbHelper.populateAsync(mDb);
+        }
 
         // Receive changes
         subscribeToDbChanges();
