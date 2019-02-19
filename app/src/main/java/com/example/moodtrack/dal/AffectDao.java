@@ -17,6 +17,9 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 @TypeConverters(DateConverter.class)
 public interface AffectDao {
 
+    @Query("SELECT count(*) FROM Affect")
+    int getCount();
+
     @Query("SELECT * FROM Affect")
     LiveData<List<Affect>> getMoodDataList();
 

@@ -29,9 +29,10 @@ public class MoodViewModel extends AndroidViewModel {
 
     public void createDb() {
         mDb = AppDatabase.getInMemoryDatabase(getApplication());
+//        mDb = AppDatabase.getDatabase(getApplication());
 
         // Populate it with initial data
-        DatabaseInitializer.populateAsync(mDb);
+        DbHelper.populateAsync(mDb);
 
         // Receive changes
         subscribeToDbChanges();
@@ -45,15 +46,8 @@ public class MoodViewModel extends AndroidViewModel {
             @Override
             public String apply(List<Affect> affects) {
                 StringBuilder sb = new StringBuilder();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm",
-                        Locale.US);
-
                 for (Affect moodData : affects) {
-                    sb.append(String.format("Affect %d:\n  %s, %s\n  %s\n",
-                            moodData.id,
-                            moodData.type,
-                            moodData.name,
-                            simpleDateFormat.format(moodData.date)));
+                    sb.append(moodData);
                 }
                 return sb.toString();
             }

@@ -35,10 +35,10 @@ public class EntriesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        final Button saveButton = getActivity().findViewById(R.id.button_save);
+        final Button saveButton = getActivity().findViewById(R.id.save_entry_btn);
 
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
 //                Intent replyIntent = new Intent();
 //                if (TextUtils.isEmpty(saveButton.getText())) {
 //                    getActivity().setResult(getActivity().RESULT_CANCELED, replyIntent);
@@ -48,8 +48,8 @@ public class EntriesFragment extends Fragment {
 //                    getActivity().setResult(getActivity().RESULT_OK, replyIntent);
 //                }
 //                getActivity().finish();
-//            }
-//        });
+            }
+        });
     }
 
 }

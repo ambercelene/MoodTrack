@@ -4,27 +4,32 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/entry_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mood_entry_header"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        />
 
     <EditText
-        android:id="@+id/edit_word"
+        android:id="@+id/entry_textbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:hint="@string/hint_word"
         android:inputType="textAutoComplete"
         android:textSize="18sp"
-        android:paddingTop="30dp"/>
+        android:paddingTop="30dp"
+        android:layout_below="@id/entry_header"
+        />
 
     <Button
-        android:id="@+id/button_save"
+        android:id="@+id/save_entry_btn"
         android:text="@string/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:paddingTop="60dp" />
+        android:paddingTop="10dp"
+        android:layout_below="@id/entry_textbox"/>
 
 </RelativeLayout>
