@@ -1,11 +1,22 @@
 <resources>
     <string name="app_name">MoodTrack</string>
     <string name="title_home">Home</string>
-    <string name="title_entries">Entries</string>
     <string name="title_calendar">Calendar</string>
-    <string name="no_mood_data">No mood data</string>
-    <string name="mood_entry_header">Mood Entries</string>
     <string name="calendar_header">Calendar</string>
-    <string name="hint_word">How you feeling?</string>
+    <string name="title_entries">Entries</string>
+    <string name="no_mood_data">No mood data</string>
+    <string name="mood_entry_header">How are you feeling?</string>
     <string name="button_save">Save</string>
+    <string name="mood_entry_description">Describe your experience</string>
+    <string name="entry_textbox_hint">I ended up late for work...</string>
+
+    <string-array name="moods_array">
+        <item>Nuetral</item>
+        <item>Happy</item>
+        <item>Excited</item>
+        <item>Tender</item>
+        <item>Sad</item>
+        <item>Angry</item>
+        <item>Annoyed</item>
+    </string-array>
 </resources>

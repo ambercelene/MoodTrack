@@ -1,20 +1,25 @@
 package com.example.moodtrack;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.example.moodtrack.dal.MoodViewModel;
 
-public class EntriesFragment extends Fragment {
+public class EntriesFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    public static final String EXTRA_REPLY = "com.mood.tracker.moodlistsql.REPLY";
+    public static final String EXTRA_REPLY = "com.example.moodtrack.entry.REPLY";
 
     private MoodViewModel mMoodViewModel;
 
@@ -35,22 +40,44 @@ public class EntriesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        final Button saveButton = getActivity().findViewById(R.id.save_entry_btn);
+        Spinner spinner = (Spinner) getActivity().findViewById(R.id.entry_spinner);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.moods_array,
+                android.R.layout.simple_spinner_item
+        );
+         // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        final Button textBox = getActivity().findViewById(R.id.entry_textbox);
+
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
 //                Intent replyIntent = new Intent();
 //                if (TextUtils.isEmpty(saveButton.getText())) {
 //                    getActivity().setResult(getActivity().RESULT_CANCELED, replyIntent);
 //                } else {
-//                    String word = saveButton.getText().toString();
-//                    replyIntent.putExtra(EXTRA_REPLY, word);
+//                    String entry = saveButton.getText().toString();
+//                    replyIntent.putExtra(EXTRA_REPLY, entry);
 //                    getActivity().setResult(getActivity().RESULT_OK, replyIntent);
 //                }
 //                getActivity().finish();
-            }
-        });
+//            }
+//        });
     }
+
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
+
 
 }
 

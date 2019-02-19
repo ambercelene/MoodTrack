@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,19 +10,34 @@
         android:layout_height="wrap_content"
         android:text="@string/mood_entry_header"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        />
+        tools:layout_marginTop="10dp" />
+
+    <Spinner
+        android:id="@+id/entry_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_header"
+        tools:padding="5dp" />
+
+    <TextView
+        android:id="@+id/entry_mood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_spinner"
+        android:text="@string/mood_entry_description"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        tools:paddingTop="10dp" />
 
     <EditText
         android:id="@+id/entry_textbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_word"
+        android:hint="@string/entry_textbox_hint"
         android:inputType="textAutoComplete"
         android:textSize="18sp"
         android:paddingTop="30dp"
-        android:layout_below="@id/entry_header"
-        />
+        android:layout_below="@id/entry_mood" />
 
     <Button
         android:id="@+id/save_entry_btn"
@@ -31,5 +47,7 @@
         android:background="@color/colorPrimary"
         android:paddingTop="10dp"
         android:layout_below="@id/entry_textbox"/>
+
+
 
 </RelativeLayout>
