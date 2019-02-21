@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Amber\\AndroidStudioProjects\\MoodTrack\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Amber\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\8382379c097af6d10e1d59844f6346fb\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\Amber\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0-beta01.aar\\fad771b97136c1f3a213b1706ba7e993\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

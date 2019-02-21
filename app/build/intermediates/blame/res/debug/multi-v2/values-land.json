@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Amber\\AndroidStudioProjects\\MoodTrack\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Amber\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\8382379c097af6d10e1d59844f6346fb\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Amber\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0-beta01.aar\\fad771b97136c1f3a213b1706ba7e993\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Amber\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\aac1d00b87aa0b740e34f7adab68ac9c\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Amber\\.gradle\\caches\\transforms-1\\files-1.1\\material-1.0.0-beta01.aar\\b9cc1304935e1e9b423812857ce27d71\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
