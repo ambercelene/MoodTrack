@@ -6,17 +6,18 @@
 
     <TextView
         android:id="@+id/entry_header"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mood_entry_header"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        tools:layout_marginTop="10dp" />
+        android:layout_marginTop="@dimen/entry_vertical_margin" />
 
     <Spinner
         android:id="@+id/entry_spinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/entry_header"
+        android:layout_marginTop="@dimen/entry_vertical_margin"
         tools:padding="5dp" />
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_below="@id/entry_spinner"
         android:text="@string/mood_entry_description"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        tools:paddingTop="10dp" />
+        android:layout_marginTop="@dimen/entry_vertical_margin" />
 
     <EditText
         android:id="@+id/entry_textbox"
@@ -36,18 +37,81 @@
         android:hint="@string/entry_textbox_hint"
         android:inputType="textAutoComplete"
         android:textSize="18sp"
-        android:paddingTop="30dp"
-        android:layout_below="@id/entry_mood" />
+        android:layout_below="@id/entry_mood"
+        android:layout_marginTop="@dimen/entry_vertical_margin" />
+
+    <TextView
+        android:id="@+id/entry_intensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_textbox"
+        android:text="@string/mood_entry_intensity"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="@dimen/entry_vertical_margin" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entry_textbox"
+        android:layout_toEndOf="@+id/entry_intensity"
+        android:layout_toRightOf="@+id/entry_intensity"
+        android:layout_marginTop="@dimen/entry_radio_margin"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/intensity_level_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onIntensityRadioButtonClicked"
+            android:text="1" />
+
+        <RadioButton
+            android:id="@+id/intensity_level_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onIntensityRadioButtonClicked"
+            android:text="2" />
+
+        <RadioButton
+            android:id="@+id/intensity_level_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onIntensityRadioButtonClicked"
+            android:text="3" />
+
+        <RadioButton
+            android:id="@+id/intensity_level_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onIntensityRadioButtonClicked"
+            android:text="4" />
+
+        <RadioButton
+            android:id="@+id/intensity_level_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onIntensityRadioButtonClicked"
+            android:text="5" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/entry_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_intensity"
+        android:text="@string/mood_entry_duration"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="@dimen/entry_vertical_margin" />
 
     <Button
         android:id="@+id/save_entry_btn"
         android:text="@string/button_save"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
-        android:paddingTop="10dp"
-        android:layout_below="@id/entry_textbox"/>
-
-
+        android:padding="10dp"
+        android:layout_below="@id/entry_duration"
+        android:layout_marginTop="@dimen/entry_vertical_margin" />
 
 </RelativeLayout>

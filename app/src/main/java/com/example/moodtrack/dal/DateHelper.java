@@ -18,10 +18,10 @@ package com.example.moodtrack.dal;
 
 import android.arch.persistence.room.TypeConverter;
 
+import java.util.Calendar;
 import java.util.Date;
 
-public class
-DateConverter {
+public class DateHelper {
     @TypeConverter
     public static Date toDate(Long timestamp) {
         return timestamp == null ? null : new Date(timestamp);
@@ -30,5 +30,20 @@ DateConverter {
     @TypeConverter
     public static Long toTimestamp(Date date) {
         return date == null ? null : date.getTime();
+    }
+
+    /**
+     * Returns a date object representing some date, however many daysAgo from now.
+     *
+     * Date today = DateHelper.getTodayPlusDays(0);
+     * Date yesterday = DateHelper.getTodayPlusDays(-1);
+     * Date twoDaysAgo = DateHelper.getTodayPlusDays(-2);
+     * Date lastWeek = DateHelper.getTodayPlusDays(-7);
+     * Date twoWeeksAgo = DateHelper.getTodayPlusDays(-14);
+     */
+    public static Date getTodayPlusDays(int daysAgo) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, daysAgo);
+        return calendar.getTime();
     }
 }

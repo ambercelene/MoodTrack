@@ -29,10 +29,7 @@ public class CalendarFragment extends Fragment {
         // do not reference db in an activity, use a view model
         mMoodViewModel = ViewModelProviders.of(this).get(MoodViewModel.class);
 
-        // if no database exists, create one
-        if (mMoodViewModel.getAffectsResult() == null) {
-            populateDb();
-        }
+//        populateDb();
 
         return inflater.inflate(R.layout.fragment_calendar, null);
 
@@ -43,6 +40,8 @@ public class CalendarFragment extends Fragment {
 
         // get the view mood list text element
         mMoodsListView = (TextView) getActivity().findViewById(R.id.mood_list);
+
+        populateDb(); //TODO: this should move into MainActivity
 
         // bind data to text element
         subscribeUiMoods();

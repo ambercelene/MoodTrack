@@ -6,21 +6,24 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Transformations;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
 
 public class MoodViewModel extends AndroidViewModel {
 
     private LiveData<String> mAffectsResult;
 
+    private LiveData<List<Affect>> affectsList;
+
     private AppDatabase mDb;
 
     public MoodViewModel(Application application) {
         super(application);
+    }
+
+    public LiveData<List<Affect>> getAffectsList() {
+        return mDb.affectModel().getMoodDataList();
     }
 
     public LiveData<String> getAffectsResult() {
@@ -30,11 +33,6 @@ public class MoodViewModel extends AndroidViewModel {
     public void createDb() {
         mDb = AppDatabase.getInMemoryDatabase(getApplication());
 //        mDb = AppDatabase.getDatabase(getApplication());
-
-        if(mDb.affectModel().getCount() == 0) {
-            // Populate it with initial data
-            DbHelper.populateAsync(mDb);
-        }
 
         // Receive changes
         subscribeToDbChanges();
@@ -56,9 +54,4 @@ public class MoodViewModel extends AndroidViewModel {
         });
     }
 
-    private Date getYesterdayDate() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, -1);
-        return calendar.getTime();
-    }
 }

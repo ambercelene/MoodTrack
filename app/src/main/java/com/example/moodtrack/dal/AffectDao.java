@@ -14,7 +14,7 @@ import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao
-@TypeConverters(DateConverter.class)
+@TypeConverters(DateHelper.class)
 public interface AffectDao {
 
     @Query("SELECT count(*) FROM Affect")

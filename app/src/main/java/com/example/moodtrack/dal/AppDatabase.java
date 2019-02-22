@@ -1,6 +1,7 @@
 package com.example.moodtrack.dal;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import android.arch.persistence.room.Database;
@@ -10,12 +11,11 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import java.util.Date;
-
 
 @Database(entities = {Affect.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
+    private final static String DB_NAME = "mood_affects.db";
     private static AppDatabase INSTANCE;
 
     public abstract AffectDao affectModel();
@@ -24,8 +24,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE =
                     Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class)
-                            // Don't do this on a real app!
+                            // Don't allow queries on main thread in production!
                             .allowMainThreadQueries()
+                            .addCallback(sOnOpenDbCallback)
                             .build();
        }
         return INSTANCE;
@@ -39,8 +40,9 @@ public abstract class AppDatabase extends RoomDatabase {
                     // Create database
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class,
-                            "mood_database"
-                    ).addCallback(sOnOpenDbCallback)
+                            DB_NAME
+                    ).allowMainThreadQueries() // Don't do this in production!
+                     .addCallback(sOnOpenDbCallback)
                      .build();
                 }
             }
@@ -68,15 +70,15 @@ public abstract class AppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params) {
+//            mDao.deleteAll();
 
+            // if no affects stored in model, prime with initial data
             if (mDao.getCount() == 0) {
-                mDao.deleteAll();
-
-                mDao.insert(new Affect("emotion", "angry", DbHelper.getTodayPlusDays(0)));
-                mDao.insert(new Affect("feeling", "distracted", DbHelper.getTodayPlusDays(-1)));
-                mDao.insert(new Affect("experience", "homework", DbHelper.getTodayPlusDays(-2)));
-                mDao.insert(new Affect("feeling", "confused", DbHelper.getTodayPlusDays(-7)));
-                mDao.insert(new Affect("emotion", "excited", DbHelper.getTodayPlusDays(-14)));
+                mDao.insert(new Affect("emotion", "angry", DateHelper.getTodayPlusDays(0)));
+                mDao.insert(new Affect("feeling", "distracted", DateHelper.getTodayPlusDays(-1)));
+                mDao.insert(new Affect("experience", "homework", DateHelper.getTodayPlusDays(-2)));
+                mDao.insert(new Affect("feeling", "confused", DateHelper.getTodayPlusDays(-7)));
+                mDao.insert(new Affect("emotion", "excited", DateHelper.getTodayPlusDays(-14)));
 
                 Log.d("DB", "Initialized mood data.");
             }

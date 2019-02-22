@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 
 @Entity
-@TypeConverters(DateConverter.class)
+@TypeConverters(DateHelper.class)
 public class Affect {
 
     @PrimaryKey(autoGenerate = true)
