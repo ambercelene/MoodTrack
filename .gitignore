@@ -19,6 +19,10 @@ out/
 # Gradle files
 .gradle/
 build/
+<<<<<<< HEAD
+=======
+app/build/*
+>>>>>>> 7ee09c0a6eae3810ce3820efeb442ca4fc6a15d3
 
 # Local configuration file (sdk path, etc)
 local.properties
