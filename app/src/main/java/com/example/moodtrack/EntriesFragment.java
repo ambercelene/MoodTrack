@@ -47,20 +47,6 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
         Spinner moodsList = loadSpinner((Spinner) getActivity().findViewById(R.id.entry_spinner));
 
         final Button textBox = getActivity().findViewById(R.id.entry_textbox);
-
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent replyIntent = new Intent();
-//                if (TextUtils.isEmpty(saveButton.getText())) {
-//                    getActivity().setResult(getActivity().RESULT_CANCELED, replyIntent);
-//                } else {
-//                    String entry = saveButton.getText().toString();
-//                    replyIntent.putExtra(EXTRA_REPLY, entry);
-//                    getActivity().setResult(getActivity().RESULT_OK, replyIntent);
-//                }
-//                getActivity().finish();
-//            }
-//        });
     }
 
     private Spinner loadSpinner(Spinner spinner) {
@@ -70,8 +56,10 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
                 R.array.moods_array,
                 android.R.layout.simple_spinner_item
         );
+
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         return spinner;
