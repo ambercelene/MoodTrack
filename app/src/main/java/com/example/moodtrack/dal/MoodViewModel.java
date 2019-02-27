@@ -6,8 +6,6 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Transformations;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class MoodViewModel extends AndroidViewModel {
