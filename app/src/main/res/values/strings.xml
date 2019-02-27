@@ -6,7 +6,7 @@
     <string name="title_entries">Entries</string>
     <string name="no_mood_data">No mood data</string>
     <string name="mood_entry_header">How are you feeling?</string>
-    <string name="button_save">Save</string>
+    <string name="save_entry_btn">Save</string>
     <string name="mood_entry_description">Describe your experience</string>
     <string name="entry_textbox_hint">I ended up late for work...</string>
     <string name="mood_entry_intensity">Intensity</string>

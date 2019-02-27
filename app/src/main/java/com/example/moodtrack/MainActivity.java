@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.moodtrack.dal.MoodViewModel;
 
@@ -36,9 +37,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         navigation.setOnNavigationItemSelectedListener(this);
         loadFragment(new HomeFragment());
 
-//        final Button button = findViewById(R.id.save_entry_btn);
+        final Button button = findViewById(R.id.save_entry_btn);
 //        button.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View view) {
+//                Toast msg = Toast.makeText(getApplicationContext(), "Button pushed", Toast.LENGTH_SHORT);
+//                msg.show();
 //                Intent replyIntent = new Intent();
 //                if (TextUtils.isEmpty(mEditWordView.getText())) {
 //                    setResult(RESULT_CANCELED, replyIntent);

@@ -1,7 +1,6 @@
 package com.example.moodtrack.dal;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import android.arch.persistence.room.Database;

@@ -28,6 +28,10 @@ public class MoodViewModel extends AndroidViewModel {
         return mAffectsResult;
     }
 
+    public void insert(Affect moodData) {
+        mDb.affectModel().insert(moodData);
+    }
+
     public void createDb() {
         mDb = AppDatabase.getInMemoryDatabase(getApplication());
 //        mDb = AppDatabase.getDatabase(getApplication());
@@ -37,7 +41,7 @@ public class MoodViewModel extends AndroidViewModel {
     }
 
     private void subscribeToDbChanges() {
-        LiveData<List<Affect>> affectsList = mDb.affectModel().getMoodDataList();
+        affectsList = mDb.affectModel().getMoodDataList();
 
         // Instead of exposing the list of Loans, we can apply a transformation and expose Strings.
         mAffectsResult = Transformations.map(affectsList, new Function<List<Affect>, String>() {
