@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <TextView
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:text="@string/calendar_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/mood_list"
-        android:text="@string/no_mood_data"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp" />
+        android:layout_height="match_parent">
 
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/mood_list_header"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="@string/calendar_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calendarView" />
+
+        <TextView
+            android:id="@+id/mood_list"
+            android:text="@string/no_mood_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:layout_below="@id/mood_list_header"/>
+
+    </RelativeLayout>
+</ScrollView>

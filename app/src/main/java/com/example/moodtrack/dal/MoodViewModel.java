@@ -10,11 +10,20 @@ import java.util.List;
 
 public class MoodViewModel extends AndroidViewModel {
 
+    /**
+     * Mood database
+     */
+    private AppDatabase mDb;
+
+    /**
+     * Formatted string of list of stored affects
+     */
     private LiveData<String> mAffectsResult;
 
+    /**
+     * ArrayList of stored affects
+     */
     private LiveData<List<Affect>> affectsList;
-
-    private AppDatabase mDb;
 
     public MoodViewModel(Application application) {
         super(application);
@@ -32,7 +41,7 @@ public class MoodViewModel extends AndroidViewModel {
         mDb.affectModel().insert(moodData);
     }
 
-    public void createDb() {
+    public void initDb() {
         mDb = AppDatabase.getInMemoryDatabase(getApplication());
 //        mDb = AppDatabase.getDatabase(getApplication());
 
