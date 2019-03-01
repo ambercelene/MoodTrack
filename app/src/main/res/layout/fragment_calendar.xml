@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,13 +32,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/calendarView" />
 
-        <TextView
-            android:id="@+id/mood_list"
-            android:text="@string/no_mood_data"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="30dp"
-            android:layout_below="@id/mood_list_header"/>
+            android:layout_height="match_parent"
+            android:background="@android:color/background_light"
+            tools:listitem="@layout/recyclerview_item"
+            android:layout_below="@id/mood_list_header" />
 
     </RelativeLayout>
 </ScrollView>

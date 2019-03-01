@@ -7,18 +7,25 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.moodtrack.dal.Affect;
 import com.example.moodtrack.dal.MoodViewModel;
+
+import java.util.List;
 
 
 public class CalendarFragment extends Fragment {
 
-    private MoodViewModel mMoodViewModel;
-    private TextView mMoodsListView;
+    private MoodViewModel moodViewModel;
+    private MoodCalendarListAdapter adapter;
+    private TextView moodsListView;
 
     @Nullable
     @Override
@@ -27,7 +34,7 @@ public class CalendarFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         // do not reference db in an activity, use a view model
-        mMoodViewModel = ViewModelProviders.of(this).get(MoodViewModel.class);
+        moodViewModel = ViewModelProviders.of(this).get(MoodViewModel.class);
 
         return inflater.inflate(R.layout.fragment_calendar, null);
 
@@ -36,25 +43,32 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        // get the view mood list text element
-        mMoodsListView = (TextView) getActivity().findViewById(R.id.mood_list);
-
         startDb();
 
         // bind data to text element
         subscribeUiMoods();
+
+        // set up the calendar selected mood data list using an adapter
+        RecyclerView recyclerView = getActivity().findViewById(R.id.recyclerview);
+        loadRecyclerView(recyclerView);
     }
 
+    private void loadRecyclerView(RecyclerView recyclerView) {
+        adapter = new MoodCalendarListAdapter(getContext());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
 
     private void startDb() {
-        mMoodViewModel.initDb();
+        moodViewModel.initDb();
     }
 
     private void subscribeUiMoods() {
-        mMoodViewModel.getAffectsResult().observe(this, new Observer<String>() {
+        moodViewModel.getAffectsList().observe(this, new Observer<List<Affect>>() {
             @Override
-            public void onChanged(@Nullable final String result) {
-                mMoodsListView.setText(result);
+            public void onChanged(@Nullable final List<Affect> affects) {
+                // Update the cached copy of the affects in the adapter.
+                adapter.setMoodData(affects);
             }
         });
     }

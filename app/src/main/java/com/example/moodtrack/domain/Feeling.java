@@ -8,6 +8,6 @@ public class Feeling extends Affect {
 
     @Override
     public String toString() {
-        return getName();
+        return super.getType();
     }
 }
