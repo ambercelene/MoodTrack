@@ -20,7 +20,7 @@ class Day {
 
     protected Weekday weekday;
 
-    protected String date; // hashkey
+    protected String date; // hashkey; format "yyyy-MM-dd"
 
     protected Affect moodData; // the entry
 }

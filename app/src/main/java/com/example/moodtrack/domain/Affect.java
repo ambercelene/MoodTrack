@@ -6,19 +6,27 @@ import java.util.Calendar;
 public abstract class Affect {
 
     private String date;
-    private String name;
-    private String experience;
+    private String type;
+    private String description;
     private int duration;
     private int intensity;
 
-    public Affect(String name) {
-        this.name = name;
+    public Affect(String type) {
+        setType(type);
         setDate();
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 
     private void setDate() {
         Calendar rightNow = Calendar.getInstance();
-        SimpleDateFormat ymdformat = new SimpleDateFormat("yyyy / MM / dd ");
+        SimpleDateFormat ymdformat = new SimpleDateFormat("yyyy-MM-dd");
         date = ymdformat.format(rightNow.getTime());
     }
 
@@ -26,20 +34,12 @@ public abstract class Affect {
         return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String comment) {
+        description = comment;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setExperience(String comment) {
-        experience = comment;
-    }
-
-    public String getExperience() {
-        return experience;
+    public String getDescription() {
+        return description;
     }
 
     public void setDuration(int count) {

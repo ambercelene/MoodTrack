@@ -5,13 +5,16 @@ import java.util.HashMap;
 public class MoodCalendar {
 
     /**
-     * The calendar, simply mapping a unique date to it's day.
-     * Create a date like: year + "-" + MONTH + "-" + DAY
+     * String date of entry. Format, "yyyy-MM-dd"
      */
     HashMap<String, Day> calendar;
 
     public MoodCalendar() {
         calendar = new HashMap<>();
+    }
+
+    public void addEntry(Affect moodData) {
+        //
     }
 }
 
