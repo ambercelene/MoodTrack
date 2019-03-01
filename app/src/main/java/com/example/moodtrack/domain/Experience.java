@@ -3,7 +3,7 @@ package com.example.moodtrack.domain;
 public class Experience extends Affect {
 
     public Experience(String comment) {
-        super("experience");
+        super("Experience");
         setDescription(comment);
     }
 

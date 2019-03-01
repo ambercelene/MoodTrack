@@ -2,8 +2,8 @@ package com.example.moodtrack.domain;
 
 public class Feeling extends Affect {
 
-    public Feeling(String name) {
-        super(name); // set name and date
+    public Feeling(String type) {
+        super(type); // set name and date
     }
 
     @Override

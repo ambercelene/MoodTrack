@@ -26,7 +26,7 @@ public abstract class Affect {
 
     private void setDate() {
         Calendar rightNow = Calendar.getInstance();
-        SimpleDateFormat ymdformat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat ymdformat = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss");
         date = ymdformat.format(rightNow.getTime());
     }
 

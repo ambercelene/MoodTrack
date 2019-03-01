@@ -37,17 +37,16 @@ public class MoodCalendarListAdapter extends RecyclerView.Adapter<MoodCalendarLi
         return new MoodDataViewHolder(itemView);
     }
 
-    /**
-     * Format mood data (affect) item
-     *
-     * @param holder
-     * @param position
-     */
+    // format mood data (affect) item
     @Override
     public void onBindViewHolder(MoodDataViewHolder holder, int position) {
         if (moodData != null) {
             Affect current = moodData.get(position);
+
+            // FORMAT LIST ITEM HERE ------------------------------------------
             String listItem = current.date + ": " + current.type;
+            // ----------------------------------------------------------------
+
             holder.moodDataItemView.setText(listItem);
         } else {
             // Covers the case of data not being ready yet.
