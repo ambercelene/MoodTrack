@@ -1,12 +1,11 @@
 package com.example.moodtrack;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +23,6 @@ import com.example.moodtrack.dal.DateHelper;
 import com.example.moodtrack.dal.MoodViewModel;
 
 public class EntriesFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-
-    public static final String EXTRA_REPLY = "com.example.moodtrack.entry.REPLY";
 
     private String feeling;
     private String description;
@@ -54,15 +51,11 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
         final Spinner moodsList = loadSpinner((Spinner) getActivity().findViewById(R.id.entry_spinner));
         moodsList.setOnItemSelectedListener(this);
 
-//        final EditText textbox = getActivity().findViewById(R.id.entry_description);
-//        textbox.setOnClickListener(textEnteredCallback);
-
         final RadioGroup radio = getActivity().findViewById(R.id.entry_intensity);
         radio.setOnCheckedChangeListener(intensityCallback);
 
         final Button button = getActivity().findViewById(R.id.save_entry_btn);
         button.setOnClickListener(saveEntryCallback);
-
 
     }
 
@@ -86,15 +79,9 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
         return spinner;
     }
 
+    // set feeling string from Spinner data
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-
         feeling = parent.getItemAtPosition(pos).toString();
-
-        Toast.makeText(parent.getContext(),
-                "OnItemSelectedListener : " + feeling,
-                Toast.LENGTH_SHORT).show();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -107,9 +94,7 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
 
     private View.OnClickListener textEnteredCallback = new View.OnClickListener() {
         public void onClick(View v) {
-//            String str = eText.getText().toString();
-//            Toast msg = Toast.makeText(getBaseContext(),str,Toast.LENGTH_LONG);
-//            msg.show();
+//            toastIt(getContext(), "EditText box in focus");
         }
     };
 
@@ -121,7 +106,6 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
             new RadioGroup.OnCheckedChangeListener() {
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     // checkedId is the RadioButton selected
-
                     switch(checkedId) {
                         case R.id.intensity_level_1:
                             intensity = 1;
@@ -149,24 +133,29 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
 
     private View.OnClickListener saveEntryCallback = new View.OnClickListener() {
         public void onClick(View v) {
-            Toast.makeText(getContext(), "Saving Entry", Toast.LENGTH_SHORT).show();
-
+            toastIt(getContext(), "Saving Entry");
             if (feeling != null && intensity != 0) {
 
+                // get description EditText box string data
                 EditText textbox = getActivity().findViewById(R.id.entry_description);
                 description = textbox.getText().toString();
 
                 Affect moodData = new Affect(feeling, description, DateHelper.getTodayPlusDays(0));
 
-                //TODO: Save entry to db
-                if (mMoodViewModel == null) {
-                    Log.d("DB error", "No view model");
-                }
                 mMoodViewModel.insert(moodData);
-                Log.d("Saving Entry", moodData.toString());
+                Log.d("Entry saved", "\n" + moodData.toString());
             }
+            toastIt(getContext(), "Entry saved");
         }
     };
+
+    /* ------------------------------------------------------------------------
+    /   Private helper methods
+    /  --------------------------------------------------------------------- */
+
+    private void toastIt(Context context, String s) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+    }
 
 }
 

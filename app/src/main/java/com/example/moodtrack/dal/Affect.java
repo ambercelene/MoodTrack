@@ -31,8 +31,9 @@ public class Affect {
 
     public int intensity; // how strongly you are feeling it
 
-    public int duration; // length in mood
+    public long duration; // length in mood
 
+    //TODO: finish initializing Affect constructor
     public Affect(String type, String description, Date date) {
         this.type = type;
         this.description = description;
