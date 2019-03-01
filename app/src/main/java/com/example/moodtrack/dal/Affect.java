@@ -19,28 +19,29 @@ public class Affect {
     public long id;
 
     @NonNull
-    public String name; // happy, excited, boating
-
-    @NonNull
     public String type; // feeling, emotion, experience
 
+    @NonNull
+    public String description;
+
+    @NonNull
     public Date date;
 
-    public String description;
+    public String name; // happy, excited, boating
 
     public int intensity; // how strongly you are feeling it
 
     public int duration; // length in mood
 
-    public Affect(String type, String name, Date date) {
+    public Affect(String type, String description, Date date) {
         this.type = type;
-        this.name = name;
+        this.description = description;
         this.date = date;
     }
 
     public String toString() {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
-        return String.format("Affect %d:\n  %s, %s\n  %s\n", id, type, name, formater.format(date));
+        return String.format("Affect %d:\n  %s, %s\n  %s\n", id, type, description, formater.format(date));
     }
 
 }

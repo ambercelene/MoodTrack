@@ -27,6 +27,8 @@ public class MoodViewModel extends AndroidViewModel {
 
     public MoodViewModel(Application application) {
         super(application);
+        mDb = AppDatabase.getInMemoryDatabase(getApplication());
+//        mDb = AppDatabase.getDatabase(getApplication());
     }
 
     public LiveData<List<Affect>> getAffectsList() {
@@ -42,9 +44,6 @@ public class MoodViewModel extends AndroidViewModel {
     }
 
     public void initDb() {
-        mDb = AppDatabase.getInMemoryDatabase(getApplication());
-//        mDb = AppDatabase.getDatabase(getApplication());
-
         // Receive changes
         subscribeToDbChanges();
     }

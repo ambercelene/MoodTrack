@@ -30,7 +30,7 @@
         android:layout_marginTop="@dimen/entry_vertical_margin" />
 
     <EditText
-        android:id="@+id/entry_textbox"
+        android:id="@+id/entry_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
@@ -41,20 +41,21 @@
         android:layout_marginTop="@dimen/entry_vertical_margin" />
 
     <TextView
-        android:id="@+id/entry_intensity"
+        android:id="@+id/entry_intensity_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/entry_textbox"
+        android:layout_below="@id/entry_description"
         android:text="@string/mood_entry_intensity"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:layout_marginTop="@dimen/entry_vertical_margin" />
 
     <RadioGroup
+        android:id="@+id/entry_intensity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/entry_textbox"
-        android:layout_toEndOf="@+id/entry_intensity"
-        android:layout_toRightOf="@+id/entry_intensity"
+        android:layout_below="@+id/entry_description"
+        android:layout_toEndOf="@+id/entry_intensity_header"
+        android:layout_toRightOf="@+id/entry_intensity_header"
         android:layout_marginTop="@dimen/entry_radio_margin"
         android:orientation="horizontal">
 
@@ -62,35 +63,30 @@
             android:id="@+id/intensity_level_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onIntensityRadioButtonClicked"
             android:text="1" />
 
         <RadioButton
             android:id="@+id/intensity_level_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onIntensityRadioButtonClicked"
             android:text="2" />
 
         <RadioButton
             android:id="@+id/intensity_level_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onIntensityRadioButtonClicked"
             android:text="3" />
 
         <RadioButton
             android:id="@+id/intensity_level_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onIntensityRadioButtonClicked"
             android:text="4" />
 
         <RadioButton
             android:id="@+id/intensity_level_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onIntensityRadioButtonClicked"
             android:text="5" />
     </RadioGroup>
 
