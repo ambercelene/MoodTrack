@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.moodtrack.dal.Affect;
 import com.example.moodtrack.dal.MoodViewModel;
@@ -24,7 +23,6 @@ public class CalendarFragment extends Fragment {
 
     private MoodViewModel moodViewModel;
     private MoodCalendarListAdapter adapter;
-    private TextView moodsListView;
 
     @Nullable
     @Override
@@ -47,12 +45,13 @@ public class CalendarFragment extends Fragment {
         // bind data to text element
         subscribeUiMoods();
 
-        // set up the calendar selected mood data list using an adapter
-        RecyclerView recyclerView = getActivity().findViewById(R.id.recyclerview);
-        loadRecyclerView(recyclerView);
+        // set up list view for date selected mood data
+        loadRecyclerView();
     }
 
-    private void loadRecyclerView(RecyclerView recyclerView) {
+    // set up list view for date selected mood data using an adapter
+    private void loadRecyclerView() {
+        RecyclerView recyclerView = getActivity().findViewById(R.id.recyclerview);
         adapter = new MoodCalendarListAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
