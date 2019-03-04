@@ -11,12 +11,12 @@ public class MoodCalendarTest {
     MoodCalendar mcal;
 
     @Before
-    void start() {
+    public void start() {
         mcal = new MoodCalendar();
     }
 
     @Test
-    void testAddEntrySavesMoodDataCorrectly() {
+    public void testAddEntrySavesMoodDataCorrectly() {
         Experience xp = new Experience("Max'n relax'n");
         mcal.addEntry(xp);
 
@@ -24,7 +24,7 @@ public class MoodCalendarTest {
     }
 
     @Test
-    void testGetEntry() {
+    public void testGetEntry() {
         Experience affect1 = new Experience("Max'n relax'n");
         Feeling affect2 = new Feeling("Chill");
         Experience affect3 = new Experience("Just exercised.");

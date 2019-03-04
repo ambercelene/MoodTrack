@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         mMoodViewModel = ViewModelProviders.of(this).get(MoodViewModel .class);
-//        mMoodViewModel.initDb();
+        mMoodViewModel.initDb();
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);

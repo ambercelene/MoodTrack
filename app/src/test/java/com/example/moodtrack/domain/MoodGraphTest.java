@@ -7,32 +7,32 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-class MoodGraphTest {
+public class MoodGraphTest {
 
     MoodGraph graph;
 
     @Before
-    void setUp() {
+    public void start() {
         graph = new MoodGraph();
     }
 
     @After
-    void tearDown() {
+    public void finish() {
         graph = null;
     }
 
     @Test
-    void testCanCreateNewGraph() {
+    public void testCanCreateNewGraph() {
         assertNotNull(graph);
     }
 
     @Test
-    void testNewGraphIsInitiallyEmpty() {
+    public void testNewGraphIsInitiallyEmpty() {
         assertEquals(0, graph.getSize());
     }
 
     @Test
-    void testNewGraphHasInitialCapacityOf127() {
+    public void testNewGraphHasInitialCapacityOf127() {
         assertEquals(127, graph.getCapacity());
     }
 }

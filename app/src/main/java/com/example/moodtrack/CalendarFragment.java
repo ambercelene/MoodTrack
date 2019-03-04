@@ -40,7 +40,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        startDb();
+//        startDb();
 
         // bind data to text element
         subscribeUiMoods();
