@@ -25,7 +25,7 @@ public class Entry {
         String[] dateparts = date.split("/")[0].split("-");
         year = Integer.parseInt(dateparts[0]);
         month = Integer.parseInt(dateparts[1]);
-        day = Integer.parseInt(dateparts[1]);
+        day = Integer.parseInt(dateparts[2]);
     }
 
 }
