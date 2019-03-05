@@ -28,8 +28,8 @@ public class MoodViewModel extends AndroidViewModel {
 
     public MoodViewModel(Application application) {
         super(application);
-        mDb = AppDatabase.getInMemoryDatabase(getApplication());
-//        mDb = AppDatabase.getDatabase(getApplication());
+//        mDb = AppDatabase.getInMemoryDatabase(getApplication());
+        mDb = AppDatabase.getDatabase(getApplication());
     }
 
     public LiveData<List<Affect>> getAffectsList() {
