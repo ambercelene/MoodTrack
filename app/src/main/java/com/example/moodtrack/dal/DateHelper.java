@@ -16,10 +16,10 @@
 
 package com.example.moodtrack.dal;
 
-import android.arch.persistence.room.TypeConverter;
-
 import java.util.Calendar;
 import java.util.Date;
+
+import androidx.room.TypeConverter;
 
 public class DateHelper {
     @TypeConverter
