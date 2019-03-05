@@ -7,6 +7,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         EntryTest.class,
-        MoodGraphTest.class,
+        HashedMoodMapTest.class,
         MoodCalendarTest.class})
 public class TestSuite {}

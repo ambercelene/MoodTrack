@@ -15,6 +15,8 @@ public class Entry {
 
     protected Affect moodData; // the entry
 
+    protected Entry next;
+
     public Entry(Affect moodData) {
         this.moodData = moodData;
         setDate(moodData);

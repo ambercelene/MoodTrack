@@ -11,8 +11,9 @@ public abstract class Affect {
     private int duration;
     private int intensity;
 
-    public Affect(String type) {
+    public Affect(String type, String description) {
         setType(type);
+        setDescription(description);
         setDate();
     }
 
