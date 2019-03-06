@@ -3,9 +3,12 @@ package com.example.moodtrack;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.example.moodtrack.dal.Affect;
 import com.example.moodtrack.dal.MoodViewModel;
@@ -42,12 +45,25 @@ public class CalendarFragment extends Fragment {
 
 //        startDb();
 
+//        MaterialCalendarView mcal = getActivity().findViewById(R.id.calendarView);
+        CalendarView cal = getActivity().findViewById(R.id.calendarView);
+        cal.setOnDateChangeListener(dateSelectedCallback);
+
         // bind data to text element
         subscribeUiMoods();
 
         // set up list view for date selected mood data
         loadRecyclerView();
     }
+
+    private CalendarView.OnDateChangeListener dateSelectedCallback = new CalendarView.OnDateChangeListener() {
+        @Override
+        public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+            String date = month + "/" + dayOfMonth + "/" + year;
+            Log.d("DateSelected", date);
+            Toast.makeText(getContext(), date, Toast.LENGTH_SHORT).show();
+        }
+    };
 
     // set up list view for date selected mood data using an adapter
     private void loadRecyclerView() {
