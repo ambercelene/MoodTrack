@@ -33,7 +33,7 @@ public class DateHelper {
     }
 
     /**
-     * Returns a date object representing some date, however many daysAgo from now.
+     * Returns a key object representing some key, however many daysAgo from now.
      *
      * Date today = DateHelper.getTodayPlusDays(0);
      * Date yesterday = DateHelper.getTodayPlusDays(-1);

@@ -53,7 +53,7 @@ public class CalendarFragment extends Fragment {
         // bind data to text element
         subscribeUiMoods();
 
-        // set up list view for date selected mood data
+        // set up list view for key selected mood data
         loadRecyclerView();
     }
 
@@ -66,7 +66,7 @@ public class CalendarFragment extends Fragment {
         }
     };
 
-    // set up list view for date selected mood data using an adapter
+    // set up list view for key selected mood data using an adapter
     private void loadRecyclerView() {
         RecyclerView recyclerView = getActivity().findViewById(R.id.recyclerview);
         adapter = new MoodCalendarListAdapter(getContext());

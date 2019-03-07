@@ -3,7 +3,7 @@ package com.example.moodtrack.domain;
 public class MoodCalendar {
 
     /**
-     * String date of entry. Format, "yyyy-MM-dd"
+     * String key of entry. Format, "yyyy-MM-dd"
      */
     DailyMoodTable map;
 

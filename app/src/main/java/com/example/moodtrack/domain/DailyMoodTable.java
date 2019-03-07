@@ -48,10 +48,10 @@ public class DailyMoodTable {
     }
 
     /**
-     * Returns list of given date's daily mood data.
+     * Returns list of given key's daily mood data.
      *
-     * @param date Get mood data for given date
-     * @return     If data exist, returns list for given date
+     * @param date Get mood data for given key
+     * @return     If data exist, returns list for given key
      */
     public DailyMoodList getDailyEntries(String date) {
         if (date == null) throw new IllegalArgumentException("Date can not be null.");

@@ -42,7 +42,7 @@ public interface AffectDao {
     // ---------------------------------------------------------------------------- //
 
     /**
-     * Observable (LiveData) affects list, later than date given
+     * Observable (LiveData) affects list, later than key given
      *
      * @param after
      * @return

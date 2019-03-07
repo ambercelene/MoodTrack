@@ -41,7 +41,7 @@ public class DailyMoodTableTest {
     @Test
     public void testHashFunction() {
         DailyMoodEntry moodData = new DailyMoodEntry(new Feeling("Annoyed"));
-//        assertEquals(45, graph.getKey(moodData.date));
+//        assertEquals(45, graph.getKey(moodData.key));
 
     }
 

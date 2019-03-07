@@ -11,7 +11,7 @@ public class DailyMoodEntry {
 
     protected int day;
 
-    protected String date; // hashkey; format "yyyy-MM-dd"
+    protected String key; // hashkey; format "yyyy-MM-dd"
 
     protected Affect moodData; // the entry
 
@@ -19,15 +19,15 @@ public class DailyMoodEntry {
 
     public DailyMoodEntry(Affect moodData) {
         this.moodData = moodData;
-        setDate(moodData);
+        setKey(moodData);
     }
 
-    private void setDate(Affect moodData) {
-        this.date = moodData.getDate().split("/")[0];
-        String[] dateparts = date.split("-");
+    private void setKey(Affect moodData) {
+        String date = moodData.getDate();
+        String[] dateparts = date.split("/")[0].split("-");
         year = Integer.parseInt(dateparts[0]);
         month = Integer.parseInt(dateparts[1]);
         day = Integer.parseInt(dateparts[2]);
+        this.key = date;
     }
-
 }

@@ -5,6 +5,9 @@ import java.util.Calendar;
 
 public abstract class Affect {
 
+    private static int id;
+
+    private String key;
     private String date;
     private String type;
     private String description;
@@ -12,6 +15,7 @@ public abstract class Affect {
     private int intensity;
 
     public Affect(String type, String description) {
+        key = String.valueOf(++id);
         setType(type);
         setDescription(description);
         setDate();
@@ -32,7 +36,8 @@ public abstract class Affect {
     }
 
     public String getDate() {
-        return date.split("/")[0];
+//        return key.split("/")[0];
+        return date;
     }
 
     public void setDescription(String comment) {
@@ -57,5 +62,9 @@ public abstract class Affect {
 
     public int getIntensity() {
         return intensity;
+    }
+
+    public String getKey() {
+        return key;
     }
 }
