@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class HashedMoodMapTest {
@@ -54,8 +56,26 @@ public class HashedMoodMapTest {
     }
 
     @Test
+    public void testLoadFactor() {
+        for(int i = 0; i < 63; i++) { // Approx half size
+            graph.insert(new Entry(new Feeling("Annoyed")));
+        }
+        assertEquals(63 / 127, graph.getLoadFactor(), 1e-8);
+    }
+
+    @Test
+    public void testLoadFactorReturnsZeroOnEmpty() {
+        assertEquals(0, graph.getLoadFactor(), 1e-8);
+    }
+
+    @Test
     public void testResizeCorrectlyResizes() {
         graph.resize();
         assertEquals(257, graph.getCapacity());
+    }
+
+    private int getRandom(int upperBound) {
+        Random rand = new Random();
+        return rand.nextInt(upperBound);
     }
 }

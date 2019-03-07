@@ -45,7 +45,6 @@ public class CalendarFragment extends Fragment {
 
 //        startDb();
 
-//        MaterialCalendarView mcal = getActivity().findViewById(R.id.calendarView);
         CalendarView cal = getActivity().findViewById(R.id.calendarView);
         cal.setOnDateChangeListener(dateSelectedCallback);
 
@@ -62,6 +61,7 @@ public class CalendarFragment extends Fragment {
             String date = month + "/" + dayOfMonth + "/" + year;
             Log.d("DateSelected", date);
             Toast.makeText(getContext(), date, Toast.LENGTH_SHORT).show();
+            //TODO; set selected date content
         }
     };
 

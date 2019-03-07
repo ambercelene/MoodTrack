@@ -54,11 +54,11 @@ public class MoodViewModel extends AndroidViewModel {
 
         // Instead of exposing the list of Loans, we can apply a transformation and expose Strings.
         mAffectsResult = Transformations.map(affectsList, new Function<List<Affect>, String>() {
-            @Override
-            public String apply(List<Affect> affects) {
-                StringBuilder sb = new StringBuilder();
-                for (Affect moodData : affects) {
-                    sb.append(moodData);
+                        @Override
+                        public String apply(List<Affect> affects) {
+                            StringBuilder sb = new StringBuilder();
+                            for (Affect moodData : affects) {
+                                sb.append(moodData);
                 }
                 return sb.toString();
             }

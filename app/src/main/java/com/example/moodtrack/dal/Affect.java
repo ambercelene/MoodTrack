@@ -43,7 +43,8 @@ public class Affect {
 
     public String toString() {
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss", Locale.US);
-        return String.format("Affect %d:\n  %s, %s\n  %s\n", id, type, description, formater.format(date));
+//        return String.format("Affect %d:\n  %s, %s\n  %s\n", id, type, description, formater.format(date));
+        return formater.format(date);
     }
 
 }

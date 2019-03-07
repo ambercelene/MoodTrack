@@ -18,7 +18,8 @@ public class HashedMoodMap {
         graph = new Entry[PRIME_GRAPH_SIZE[primeGraphSizeIndex]];
     }
 
-    private double getLoadFactor() {
+    public double getLoadFactor() {
+        if (graph.length == 0) return 0;
         return graphSize / graph.length;
     }
 
