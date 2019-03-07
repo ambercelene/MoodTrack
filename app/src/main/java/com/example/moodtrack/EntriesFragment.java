@@ -129,12 +129,12 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
             };
 
     /* ------------------------------------------------------------------------
-    /   Save Entry Button
+    /   Save DailyMoodEntry Button
     /  --------------------------------------------------------------------- */
 
     private View.OnClickListener saveEntryCallback = new View.OnClickListener() {
         public void onClick(View v) {
-            toastIt(getContext(), "Saving Entry");
+            toastIt(getContext(), "Saving DailyMoodEntry");
             if (feeling != null && intensity != 0) {
 
                 // get description EditText box string data
@@ -144,9 +144,9 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
                 Affect moodData = new Affect(feeling, description, DateHelper.getTodayPlusDays(0));
 
                 mMoodViewModel.insert(moodData);
-                Log.d("Entry saved", "\n" + moodData.toString());
+                Log.d("DailyMoodEntry saved", "\n" + moodData.toString());
             }
-            toastIt(getContext(), "Entry saved");
+            toastIt(getContext(), "DailyMoodEntry saved");
         }
     };
 

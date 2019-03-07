@@ -27,6 +27,8 @@ public class CalendarFragment extends Fragment {
     private MoodViewModel moodViewModel;
     private MoodCalendarListAdapter adapter;
 
+    private String selectedDate;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -58,10 +60,9 @@ public class CalendarFragment extends Fragment {
     private CalendarView.OnDateChangeListener dateSelectedCallback = new CalendarView.OnDateChangeListener() {
         @Override
         public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-            String date = month + "/" + dayOfMonth + "/" + year;
-            Log.d("DateSelected", date);
-            Toast.makeText(getContext(), date, Toast.LENGTH_SHORT).show();
-            //TODO; set selected date content
+            selectedDate = String.format("%d-%02d-%02d", year, month, dayOfMonth);
+            Log.d("DateSelected", selectedDate);
+            Toast.makeText(getContext(), selectedDate, Toast.LENGTH_SHORT).show();
         }
     };
 

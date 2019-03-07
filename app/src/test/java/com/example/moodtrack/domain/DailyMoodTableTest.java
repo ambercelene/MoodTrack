@@ -1,24 +1,21 @@
 package com.example.moodtrack.domain;
 
 
-import com.example.moodtrack.dal.DateHelper;
-
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Random;
 
 import static org.junit.Assert.*;
 
-public class HashedMoodMapTest {
+public class DailyMoodTableTest {
 
-    HashedMoodMap graph;
+    DailyMoodTable graph;
 
     @Before
     public void start() {
-        graph = new HashedMoodMap();
+        graph = new DailyMoodTable();
     }
 
     @After
@@ -43,22 +40,22 @@ public class HashedMoodMapTest {
 
     @Test
     public void testHashFunction() {
-        Entry moodData = new Entry(new Feeling("Annoyed"));
+        DailyMoodEntry moodData = new DailyMoodEntry(new Feeling("Annoyed"));
 //        assertEquals(45, graph.getKey(moodData.date));
 
     }
 
     @Test
     public void testInsert() {
-        Entry moodData = new Entry(new Feeling("Annoyed"));
+        Affect moodData = new Feeling("Annoyed");
         graph.insert(moodData);
-        assertTrue(graph.contains(moodData.date));
+        assertTrue(graph.contains(moodData.getDate()));
     }
 
     @Test
     public void testLoadFactor() {
         for(int i = 0; i < 63; i++) { // Approx half size
-            graph.insert(new Entry(new Feeling("Annoyed")));
+            graph.insert(new Feeling("Annoyed"));
         }
         assertEquals(63 / 127, graph.getLoadFactor(), 1e-8);
     }

@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class EntryTest {
+public class MoodEntryTest {
     @Test
     public void testEntryDateIsSetCorrectlyFromAffectDate() {
         //
         Feeling affect = new Feeling("Happy");
-        Entry entry1 = new Entry(affect);
+        DailyMoodEntry entry1 = new DailyMoodEntry(affect);
 
         // yyyy-MM-dd/HH:mm:ss
         String[] dateParts = affect.getDate().split("/")[0].split("-");

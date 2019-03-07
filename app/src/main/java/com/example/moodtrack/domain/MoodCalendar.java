@@ -1,28 +1,22 @@
 package com.example.moodtrack.domain;
 
-import java.util.HashMap;
-
 public class MoodCalendar {
 
     /**
      * String date of entry. Format, "yyyy-MM-dd"
      */
-    HashMap<String, Entry> map;
-//    HashedMoodMap map;
+    DailyMoodTable map;
 
     public MoodCalendar() {
-        map = new HashMap<>();
-//        map = new HashedMoodMap();
+        map = new DailyMoodTable();
     }
 
     public void addEntry(Affect affect) {
-        Entry entry = new Entry(affect);
-        map.put(entry.date, entry);
-//        map.insert(entry);
+        map.insert(affect);
     }
 
-    public Entry getEntry(String date) {
-        return map.get(date);
+    public Affect getEntry(String date) {
+        return map.getDailyEntries(date).get(date);
     }
 
 }

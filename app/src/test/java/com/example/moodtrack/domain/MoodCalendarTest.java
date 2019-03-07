@@ -20,19 +20,23 @@ public class MoodCalendarTest {
         Experience xp = new Experience("Max'n relax'n");
         mcal.addEntry(xp);
 
-        assertEquals(xp, mcal.getEntry(xp.getDate()).moodData);
+        assertEquals(xp, mcal.getEntry(xp.getDate()));
     }
 
     @Test
-    public void testGetEntry() {
+    public void testCanAddAndRetrieveEntry() {
         Experience affect1 = new Experience("Max'n relax'n");
-        Feeling affect2 = new Feeling("Chill");
-        Experience affect3 = new Experience("Just exercised.");
-
         mcal.addEntry(affect1);
+
+        Feeling affect2 = new Feeling("Chill");
         mcal.addEntry(affect2);
+
+        Experience affect3 = new Experience("Just exercised.");
         mcal.addEntry(affect3);
 
-        assertEquals(affect3, mcal.getEntry(affect1.getDate()).moodData);
+        assertNotNull(mcal.getEntry(affect1.getDate()));
+        assertEquals(affect1, mcal.getEntry(affect1.getDate()));
+//        assertEquals(affect2, mcal.getEntry(affect2.getDate()));
+//        assertEquals(affect3, mcal.getEntry(affect3.getDate()));
     }
 }

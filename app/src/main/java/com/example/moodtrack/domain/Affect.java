@@ -32,7 +32,7 @@ public abstract class Affect {
     }
 
     public String getDate() {
-        return date;
+        return date.split("/")[0];
     }
 
     public void setDescription(String comment) {
