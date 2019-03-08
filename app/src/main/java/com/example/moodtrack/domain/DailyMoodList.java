@@ -3,34 +3,46 @@ package com.example.moodtrack.domain;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
+/**
+ * DailyMoodList is a wrapper around Java's LinkedList that holds a day's worth of entries.
+ */
 public class DailyMoodList {
 
-    String[] moods = {"Neutral", "Happy", "Excited", "Tender", "Sad", "Angry", "Annoyed"};
+    // preprocess the mood type array data
+    public String[] moods = {"Neutral", "Happy", "Excited", "Tender", "Sad", "Angry", "Annoyed"};
 
-    LinkedList<DailyMoodEntry> list;
+    private LinkedList<Affect> list;
 
     public DailyMoodList() {
         list = new LinkedList<>();
     }
 
-    public void add(Affect affect) {
-        if (affect == null) return;
-        DailyMoodEntry entry = new DailyMoodEntry(affect);
+    public void add(Affect entry) {
+        if (entry == null) return;
         list.add(entry);
     }
 
     public Affect get(String date) {
-        for (DailyMoodEntry current : list) {
-            if (date.equals(current.key)) {
-                return current.moodData;
+        for (Affect current : list) {
+            if (date.equals(current.getKey())) {
+                return current;
             }
         }
         return null;
     }
 
+    protected LinkedList<Affect> getList() {
+        return list;
+    }
+
     public int getSize() {
         return list.size();
+    }
+
+    public boolean contains(Affect entry) {
+        return list.contains(entry);
     }
 
     /**
@@ -60,15 +72,14 @@ public class DailyMoodList {
      */
     public HashMap<String, Integer> getDailyMoodCounts() {
         HashMap<String, Integer> counts = initCounts();
-        for (DailyMoodEntry current : list) {
-            String entryType = current.moodData.getType();
+        for (Affect current : list) {
+            String entryType = current.getType();
             counts.put(entryType, counts.get(entryType) + 1);
         }
         return counts;
     }
 
     /**
-     *
      * Runtime: O(6)
      *
      * @return

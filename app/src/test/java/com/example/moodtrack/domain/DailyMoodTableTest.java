@@ -3,6 +3,7 @@ package com.example.moodtrack.domain;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Random;
@@ -11,64 +12,66 @@ import static org.junit.Assert.*;
 
 public class DailyMoodTableTest {
 
-    DailyMoodTable graph;
+    DailyMoodTable table;
 
     @Before
     public void start() {
-        graph = new DailyMoodTable();
+        table = new DailyMoodTable();
     }
 
     @After
     public void finish() {
-        graph = null;
+        table = null;
     }
 
     @Test
     public void testCanCreateNewGraph() {
-        assertNotNull(graph);
+        assertNotNull(table);
     }
 
     @Test
     public void testNewGraphIsInitiallyEmpty() {
-        assertEquals(0, graph.getSize());
+        assertEquals(0, table.getSize());
     }
 
     @Test
     public void testNewGraphHasInitialCapacityOf127() {
-        assertEquals(127, graph.getCapacity());
+        assertEquals(127, table.getCapacity());
     }
 
+    // not sure how to test this
+    @Ignore
     @Test
     public void testHashFunction() {
-        DailyMoodEntry moodData = new DailyMoodEntry(new Feeling("Annoyed"));
-//        assertEquals(45, graph.getKey(moodData.key));
+        Affect moodData = new Feeling("Annoyed");
+//        assertEquals(69, table.getKey(moodData.getKey()));
 
     }
 
     @Test
     public void testInsert() {
         Affect moodData = new Feeling("Annoyed");
-        graph.insert(moodData);
-        assertTrue(graph.contains(moodData.getDate()));
+        table.insert(moodData);
+        assertTrue(table.contains(moodData.getKey(), moodData));
     }
 
     @Test
     public void testLoadFactor() {
         for(int i = 0; i < 63; i++) { // Approx half size
-            graph.insert(new Feeling("Annoyed"));
+            table.insert(new Feeling("Annoyed"));
         }
-        assertEquals(63 / 127, graph.getLoadFactor(), 1e-8);
+        assertEquals(63 / 127, table.getLoadFactor(), 1e-8);
     }
 
     @Test
     public void testLoadFactorReturnsZeroOnEmpty() {
-        assertEquals(0, graph.getLoadFactor(), 1e-8);
+        assertEquals(0, table.getLoadFactor(), 1e-8);
     }
 
     @Test
     public void testResizeCorrectlyResizes() {
-        graph.resize();
-        assertEquals(257, graph.getCapacity());
+        table.resize();
+        assertEquals(257, table.getCapacity());
     }
 
     private int getRandom(int upperBound) {

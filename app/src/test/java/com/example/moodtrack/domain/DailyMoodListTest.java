@@ -34,12 +34,12 @@ public class DailyMoodListTest {
         Affect moodData2 = new Feeling("Sad");
         list.add(moodData2);
 
-        assertEquals(moodData, list.get(moodData.getDate()));
-        assertEquals("Bummed", list.get(moodData.getDate()).getDescription());
+        assertEquals(moodData, list.get(moodData.getKey()));
+        assertEquals("Bummed", list.get(moodData.getKey()).getDescription());
 
-        assertNotEquals(moodData.getDate(), moodData2.getDate());
+        assertNotEquals(moodData.getDate(), moodData2.getKey());
 
-        assertEquals(moodData2, list.get(moodData2.getDate()));
-        assertEquals("Sad", list.get(moodData2.getDate()).getDescription());
+        assertEquals(moodData2, list.get(moodData2.getKey()));
+        assertEquals("Sad", list.get(moodData2.getKey()).getDescription());
     }
 }

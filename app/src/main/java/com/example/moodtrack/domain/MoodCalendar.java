@@ -15,8 +15,8 @@ public class MoodCalendar {
         map.insert(affect);
     }
 
-    public Affect getEntry(String date) {
-        return map.getDailyEntries(date).get(date);
+    public Affect getEntry(String key) {
+        return map.getDailyEntries(key).get(key);
     }
 
 }

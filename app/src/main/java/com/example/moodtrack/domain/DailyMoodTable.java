@@ -3,48 +3,62 @@ package com.example.moodtrack.domain;
 
 public class DailyMoodTable {
 
-    private final int[] PRIME_GRAPH_CAPACITY = {
+    private final int[] PRIME_TABLE_CAPACITY = {
             127, 257, 503, 1013, 2027, 3001, 4003, 5011, 7507, 10007, 20011
     };
 
     private int capacityIndex;
 
-    private DailyMoodList[] graph;
+    private DailyMoodList[] table;
 
-    private int graphSize;
+    private int tableSize;
 
     public DailyMoodTable() {
-        graphSize = capacityIndex = 0;
-        graph = new DailyMoodList[PRIME_GRAPH_CAPACITY[capacityIndex]];
-//        for (int i = 0; i < graph.length; i++) {
-//            graph[i] = new DailyMoodList();
+        tableSize = capacityIndex = 0;
+        table = new DailyMoodList[PRIME_TABLE_CAPACITY[capacityIndex]];
+//        for (int i = 0; i < table.length; i++) {
+//            table[i] = new DailyMoodList();
 //        }
     }
 
     public double getLoadFactor() {
-        if (graph.length == 0) return 0;
-        return graphSize / graph.length;
+        if (table.length == 0) return 0;
+        return tableSize / table.length;
     }
 
-    private int hash(String date) {
+    private int hash(String value) {
         // naive approach
-        return Math.abs(date.hashCode()) % graph.length;
+        return Math.abs(value.hashCode()) % table.length;
+    }
+
+    /**
+     * Combines date/time and the table length to create a unique key. (avoids collisions under 1s)
+     *
+     * @param value
+     * @param mod
+     * @return
+     */
+    private int hash(String value, int mod) {
+        int hashCode = (value + String.valueOf(mod)).hashCode();
+        return Math.abs(hashCode) % table.length;
     }
 
     public int getKey(String date) {
         return hash(date);
     }
 
-    public void insert(Affect entry) {
-//        if (1.5 < getLoadFactor()) {
-//            resize();
-//        }
-        int key = hash(entry.getDate());
-        if (graph[key] == null) {
-            graph[key] = new DailyMoodList();
+    public void insert(Affect affect) {
+
+        if (1.5 < getLoadFactor()) {
+            resize();
         }
-        graph[key].add(entry);
-        graphSize++;
+        int key = hash(affect.getKey());
+        if (table[key] == null) {
+            // lazy load a new list
+            table[key] = new DailyMoodList();
+        }
+        table[key].add(affect);
+        tableSize++;
     }
 
     /**
@@ -55,33 +69,35 @@ public class DailyMoodTable {
      */
     public DailyMoodList getDailyEntries(String date) {
         if (date == null) throw new IllegalArgumentException("Date can not be null.");
-        return graph[hash(date)];
+        return table[hash(date)];
     }
 
-    public boolean contains(String key) {
-        return graph[hash(key)] != null;
+    public boolean contains(String key, Affect data) {
+        return table[hash(key)].contains(data);
     }
 
     public boolean isEmpty() {
-        return graphSize == 0;
+        return tableSize == 0;
     }
 
     public int getSize() {
-        return graphSize;
+        return tableSize;
     }
 
     public int getCapacity() {
-        return graph.length;
+        return table.length;
     }
 
     public void resize() {
-        DailyMoodList[] tempGraph = graph;
-        graph = new DailyMoodList[PRIME_GRAPH_CAPACITY[++capacityIndex]];
-//        graphSize = 0;
-//        for (int j = 0; j < tempGraph.length; j++) {
-//            for (DailyMoodEntry affect : tempGraph[j]) {
-//                insert(affect);
-//            }
-//        }
+        DailyMoodList[] tempGraph = table;
+        table = new DailyMoodList[PRIME_TABLE_CAPACITY[++capacityIndex]];
+        tableSize = 0;
+        for (int j = 0; j < tempGraph.length; j++) {
+            if (tempGraph[j] != null) {
+                for (Affect md : tempGraph[j].getList()) {
+                    insert(md);
+                }
+            }
+        }
     }
 }
