@@ -19,6 +19,9 @@ public abstract class Affect {
     private int intensity;
 
     public Affect(String type, String description) {
+        if (type == null) {
+            throw new IllegalArgumentException("Affect type cannot be empty");
+        }
         setType(type);
         setDescription(description);
         setDate();

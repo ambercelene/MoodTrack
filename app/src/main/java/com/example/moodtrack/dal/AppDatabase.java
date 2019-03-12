@@ -56,7 +56,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 @Override
                 public void onOpen (@NonNull SupportSQLiteDatabase db){
                     super.onOpen(db);
-                    new PopulateDbAsync(INSTANCE).execute();
+//                    new PopulateDbAsync(INSTANCE).execute();
                 }
             };
 
@@ -74,11 +74,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
             // if no affects stored in model, prime with initial data
             if (mDao.getCount() == 0) {
-                mDao.insert(new Affect("emotion", "angry", DateHelper.getTodayPlusDays(0)));
-                mDao.insert(new Affect("feeling", "distracted", DateHelper.getTodayPlusDays(-1)));
-                mDao.insert(new Affect("experience", "homework", DateHelper.getTodayPlusDays(-2)));
-                mDao.insert(new Affect("feeling", "confused", DateHelper.getTodayPlusDays(-7)));
-                mDao.insert(new Affect("emotion", "excited", DateHelper.getTodayPlusDays(-14)));
+                mDao.insert(new Affect("Feeling", "angry", DateHelper.getTodayPlusDays(0)));
+                mDao.insert(new Affect("Feeling", "distracted", DateHelper.getTodayPlusDays(-1)));
+                mDao.insert(new Affect("Experience", "homework", DateHelper.getTodayPlusDays(-2)));
+                mDao.insert(new Affect("Feeling", "confused", DateHelper.getTodayPlusDays(-7)));
+                mDao.insert(new Affect("Experience", "excited", DateHelper.getTodayPlusDays(-14)));
 
                 Log.d("DB", "Initialized mood data.");
             }

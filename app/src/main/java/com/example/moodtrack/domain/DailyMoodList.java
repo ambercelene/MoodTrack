@@ -3,7 +3,6 @@ package com.example.moodtrack.domain;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 /**
  * DailyMoodList is a wrapper around Java's LinkedList that holds a day's worth of entries.
@@ -87,7 +86,7 @@ public class DailyMoodList {
     private HashMap<String, Integer> initCounts() {
         HashMap<String, Integer> counts = new HashMap<>();
         for (String mood : moods) {
-            counts.put(mood, 0);
+            counts.put(mood, Integer.valueOf(0));
         }
         return counts;
     }
