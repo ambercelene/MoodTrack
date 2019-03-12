@@ -10,22 +10,29 @@ import java.util.LinkedList;
 public class DailyMoodList {
 
     // preprocess the mood type array data
-    public String[] moods = {"Neutral", "Happy", "Excited", "Tender", "Sad", "Angry", "Annoyed"};
+    public String[] moodTypes = {"Neutral", "Happy", "Excited", "Tender", "Sad", "Angry", "Annoyed"};
+
+    private int moodTypeSize;
+
+    private HashMap<String, Integer> typeCounts;
 
     private LinkedList<Affect> list;
 
     public DailyMoodList() {
         list = new LinkedList<>();
+        moodTypeSize = moodTypes.length;
+        typeCounts = initCounts();
     }
 
     public void add(Affect entry) {
         if (entry == null) return;
         list.add(entry);
+        addCount(entry.getDescription());
     }
 
-    public Affect get(String date) {
+    public Affect get(String key) {
         for (Affect current : list) {
-            if (date.equals(current.getKey())) {
+            if (key.equals(current.getKey())) {
                 return current;
             }
         }
@@ -52,10 +59,10 @@ public class DailyMoodList {
      */
     public String getOverallDailyMood() {
         String overallMood = "";
-        int max = 0;
-        HashMap<String, Integer> counts = getDailyMoodCounts();
-        for (String mood : moods) {
-            if (counts.get(mood) > max) {
+        Integer max = 0;
+        for (String mood : moodTypes) {
+            if (typeCounts.get(mood).compareTo(max) > 0) {
+                max = typeCounts.get(mood);
                 overallMood = mood;
             }
         }
@@ -70,12 +77,20 @@ public class DailyMoodList {
      * @return
      */
     public HashMap<String, Integer> getDailyMoodCounts() {
-        HashMap<String, Integer> counts = initCounts();
-        for (Affect current : list) {
-            String entryType = current.getType();
-            counts.put(entryType, counts.get(entryType) + 1);
-        }
-        return counts;
+        return typeCounts;
+    }
+
+    private void addCount(String entryType) {
+        try {
+            if (!typeCounts.containsKey(entryType)) {
+                typeCounts.put(entryType, 1);
+            } else {
+                Integer i;
+                if ((i = typeCounts.get(entryType)) != null) {
+                    typeCounts.put(entryType, i + 1);
+                }
+            }
+        } catch (NullPointerException npe) {}
     }
 
     /**
@@ -83,11 +98,11 @@ public class DailyMoodList {
      *
      * @return
      */
-    private HashMap<String, Integer> initCounts() {
-        HashMap<String, Integer> counts = new HashMap<>();
-        for (String mood : moods) {
-            counts.put(mood, Integer.valueOf(0));
+    protected HashMap<String, Integer> initCounts() {
+        typeCounts = new HashMap<>();
+        for (String mood : moodTypes) {
+            typeCounts.put(mood, 0);
         }
-        return counts;
+        return typeCounts;
     }
 }
