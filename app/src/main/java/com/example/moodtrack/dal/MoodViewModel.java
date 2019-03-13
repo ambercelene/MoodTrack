@@ -36,6 +36,10 @@ public class MoodViewModel extends AndroidViewModel {
         return mDb.affectModel().getMoodDataList();
     }
 
+    public List<Affect> getMoodData() {
+        return mDb.affectModel().getMoodDataListSync();
+    }
+
     public LiveData<String> getAffectsResult() {
         return mAffectsResult;
     }

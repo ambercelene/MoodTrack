@@ -1,6 +1,9 @@
 package com.example.moodtrack.domain;
 
 
+import com.example.moodtrack.dal.DateHelper;
+import com.example.moodtrack.dal.Affect;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -43,22 +46,24 @@ public class DailyMoodTableTest {
     @Ignore
     @Test
     public void testHashFunction() {
-        Affect moodData = new Feeling("Annoyed");
+        Affect moodData = new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(0));
+
 //        assertEquals(69, table.getKey(moodData.getKey()));
 
     }
 
     @Test
     public void testInsert() {
-        Affect moodData = new Feeling("Annoyed");
+        Affect moodData = new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(0));
         table.insert(moodData);
-        assertTrue(table.contains(moodData.getKey(), moodData));
+        assertTrue(table.contains(moodData));
     }
 
     @Test
     public void testLoadFactor() {
         for(int i = 0; i < 63; i++) { // Approx half size
-            table.insert(new Feeling("Annoyed"));
+            Affect moodData = new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(0));
+            table.insert(moodData);
         }
         assertEquals(63 / 127, table.getLoadFactor(), 1e-8);
     }

@@ -6,9 +6,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AffectTest.class,
         DailyMoodListTest.class,
         DailyMoodTableTest.class,
-        MoodCalendarTest.class
+        MoodJournalTest.class
 })
 public class TestSuite {}

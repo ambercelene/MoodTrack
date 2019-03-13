@@ -4,6 +4,8 @@ package com.example.moodtrack.domain;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import com.example.moodtrack.dal.Affect;
+
 /**
  * DailyMoodList is a wrapper around Java's LinkedList that holds a day's worth of entries.
  */
@@ -32,7 +34,7 @@ public class DailyMoodList {
 
     public Affect get(String key) {
         for (Affect current : list) {
-            if (key.equals(current.getKey())) {
+            if (key.equals(current.getDate())) {
                 return current;
             }
         }

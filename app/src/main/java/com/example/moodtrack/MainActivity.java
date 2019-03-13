@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
 import com.example.moodtrack.dal.MoodViewModel;
+import com.example.moodtrack.domain.MoodJournal;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     // do not reference db in an activity, use a view model
     private MoodViewModel mMoodViewModel;
 
+    private MoodJournal journal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         mMoodViewModel = ViewModelProviders.of(this).get(MoodViewModel .class);
         mMoodViewModel.initDb();
+
+        journal = new MoodJournal();
+        journal.load(mMoodViewModel.getMoodData());
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);

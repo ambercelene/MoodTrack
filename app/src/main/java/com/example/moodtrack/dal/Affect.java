@@ -41,10 +41,44 @@ public class Affect {
         this.date = date;
     }
 
-    public String toString() {
-        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss", Locale.US);
-//        return String.format("Affect %d:\n  %s, %s\n  %s\n", id, type, description, formater.format(key));
+    public long getId() {
+        return id;
+    }
+
+    public String getKey() {
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         return formater.format(date);
     }
 
+    public String getDate() {
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss", Locale.US);
+        return formater.format(date);
+    }
+
+    public String toString() {
+        return getDate();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getIntensity() {
+        return intensity;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    private void setDateParts() {
+        String[] dateparts = getKey().split("-");
+//        year = Integer.parseInt(dateparts[0]);
+//        month = Integer.parseInt(dateparts[1]);
+//        day = Integer.parseInt(dateparts[2]);
+    }
 }

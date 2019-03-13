@@ -1,6 +1,8 @@
 package com.example.moodtrack.domain;
 
 
+import com.example.moodtrack.dal.Affect;
+
 public class DailyMoodTable {
 
     private final int[] PRIME_TABLE_CAPACITY = {
@@ -48,6 +50,7 @@ public class DailyMoodTable {
     }
 
     public void insert(Affect affect) {
+//        Entry entry = new Entry(affect);
 
         if (1.5 < getLoadFactor()) {
             resize();
@@ -72,8 +75,8 @@ public class DailyMoodTable {
         return table[hash(date)];
     }
 
-    public boolean contains(String key, Affect data) {
-        return table[hash(key)].contains(data);
+    public boolean contains(Affect data) {
+        return table[hash(data.getKey())].contains(data);
     }
 
     public boolean isEmpty() {

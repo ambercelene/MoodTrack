@@ -8,6 +8,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Random;
 
+import com.example.moodtrack.dal.Affect;
+import com.example.moodtrack.dal.DateHelper;
+
 import static org.junit.Assert.*;
 
 public class DailyMoodListTest {
@@ -23,7 +26,7 @@ public class DailyMoodListTest {
 
     @Test
     public void testCanAddAffectToNewList() {
-        Affect moodData = new Feeling("Surprise");
+        Affect moodData = new Affect("Feeling","Happy", DateHelper.getTodayPlusDays(0));
         list.add(moodData);
 
         assertEquals(1, list.getSize());
@@ -31,30 +34,30 @@ public class DailyMoodListTest {
 
     @Test
     public void testCanAddAndGetAffect() {
-        Affect moodData = new Feeling("Bummed");
+        Affect moodData = new Affect("Feeling","Bummed", DateHelper.getTodayPlusDays(-1));
         list.add(moodData);
 
 //        try {
 //            Thread.sleep(1000);
 //        } catch (Exception e) {}
 
-        Affect moodData2 = new Feeling("Sad");
+        Affect moodData2 = new Affect("Feeling","Sad", DateHelper.getTodayPlusDays(0));
         list.add(moodData2);
 
-        assertEquals(moodData, list.get(moodData.getKey()));
-        assertEquals("Bummed", list.get(moodData.getKey()).getDescription());
+        assertEquals(moodData, list.get(moodData.getDate()));
+        assertEquals("Bummed", list.get(moodData.getDate()).getDescription());
 
-        assertNotEquals(moodData.getKey(), moodData2.getKey());
+        assertNotEquals(moodData.getDate(), moodData2.getDate());
 
-        assertEquals(moodData2, list.get(moodData2.getKey()));
-        assertEquals("Sad", list.get(moodData2.getKey()).getDescription());
+        assertEquals(moodData2, list.get(moodData2.getDate()));
+        assertEquals("Sad", list.get(moodData2.getDate()).getDescription());
     }
 
     @Test
     public void testGetSize() {
         int i = 0;
         for (int j = 0; j < 20; j++) {
-            Affect moodData = new Feeling(moods[getRandom(7)]);
+            Affect moodData = new Affect("Feeling", moods[getRandom(7)], DateHelper.getTodayPlusDays(0));
             list.add(moodData);
         }
         assertEquals(20, list.getSize());
@@ -103,39 +106,40 @@ public class DailyMoodListTest {
     public void testOverallMood() {
         loadMoodData();
         assertEquals("Neutral", list.getOverallDailyMood());
-//        assertNotNull("Annoyed", list.getOverallDailyMood());
+        assertNotNull("Annoyed", list.getOverallDailyMood());
 
-//        list.add(new Feeling("Annoyed"));
-//        assertEquals("Neutral", list.getOverallDailyMood());
-//        assertNotNull("Annoyed", list.getOverallDailyMood());
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(0)));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(0)));
+        assertEquals("Annoyed", list.getOverallDailyMood());
+        assertNotNull("Neutral", list.getOverallDailyMood());
 
     }
 
     private void loadMoodData() {
-        list.add(new Feeling("Happy"));
-        list.add(new Feeling("Happy"));
-        list.add(new Feeling("Happy"));
-        list.add(new Feeling("Happy"));
+        list.add(new Affect("Feeling","Happy", DateHelper.getTodayPlusDays(0)));
+        list.add(new Affect("Feeling","Happy", DateHelper.getTodayPlusDays(0)));
+        list.add(new Affect("Feeling","Happy", DateHelper.getTodayPlusDays(1)));
+        list.add(new Affect("Feeling","Happy", DateHelper.getTodayPlusDays(2)));
 
-        list.add(new Feeling("Neutral"));
-        list.add(new Feeling("Neutral"));
-        list.add(new Feeling("Neutral"));
-        list.add(new Feeling("Neutral"));
-        list.add(new Feeling("Neutral"));
-        list.add(new Feeling("Neutral"));
-        list.add(new Feeling("Neutral"));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(0)));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(0)));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(1)));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(1)));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(2)));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(2)));
+        list.add(new Affect("Feeling","Neutral", DateHelper.getTodayPlusDays(3)));
 
-        list.add(new Feeling("Annoyed"));
-        list.add(new Feeling("Annoyed"));
-        list.add(new Feeling("Annoyed"));
-        list.add(new Feeling("Annoyed"));
-        list.add(new Feeling("Annoyed"));
-        list.add(new Feeling("Annoyed"));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(3)));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(3)));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(3)));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(3)));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(3)));
+        list.add(new Affect("Feeling","Annoyed", DateHelper.getTodayPlusDays(3)));
 
-        list.add(new Feeling("Anger"));
-        list.add(new Feeling("Anger"));
-        list.add(new Feeling("Anger"));
-        list.add(new Feeling("Anger"));
+        list.add(new Affect("Feeling","Anger", DateHelper.getTodayPlusDays(0)));
+        list.add(new Affect("Feeling","Anger", DateHelper.getTodayPlusDays(2)));
+        list.add(new Affect("Feeling","Anger", DateHelper.getTodayPlusDays(1)));
+        list.add(new Affect("Feeling","Anger", DateHelper.getTodayPlusDays(3)));
     }
 
     private int getRandom(int upperBound) {

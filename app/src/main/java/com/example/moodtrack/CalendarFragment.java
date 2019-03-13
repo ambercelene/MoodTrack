@@ -62,7 +62,7 @@ public class CalendarFragment extends Fragment {
         public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
             selectedDate = String.format("%d-%02d-%02d", year, month, dayOfMonth);
             Log.d("DateSelected", selectedDate);
-            Toast.makeText(getContext(), selectedDate, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), selectedDate, Toast.LENGTH_SHORT).show();
         }
     };
 
