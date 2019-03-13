@@ -45,7 +45,9 @@ public class MoodCalendarListAdapter extends RecyclerView.Adapter<MoodCalendarLi
             Affect current = moodData.get(position);
 
             // FORMAT LIST ITEM HERE ------------------------------------------------------
-            String listItem = current.toString().split("/")[0] + ": " + current.type;
+            String listItem = current.getKey() + ": " + current.type
+                                + "\n" + current.getDescription()
+                                + ", intensity level: " + current.getIntensity();
             // ----------------------------------------------------------------------------
 
             holder.moodDataItemView.setText(listItem);

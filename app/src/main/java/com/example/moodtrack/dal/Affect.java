@@ -81,4 +81,8 @@ public class Affect {
 //        month = Integer.parseInt(dateparts[1]);
 //        day = Integer.parseInt(dateparts[2]);
     }
+
+    public void setIntensity(int intensity) {
+        this.intensity = intensity;
+    }
 }

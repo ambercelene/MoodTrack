@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moodtrack.dal.Affect;
@@ -28,6 +29,7 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
     private String feeling;
     private String description;
     private int intensity;
+    private int duration;
 
     private MoodViewModel mMoodViewModel;
 
@@ -56,7 +58,7 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
         radio.setOnCheckedChangeListener(intensityCallback);
 
         final Button button = getActivity().findViewById(R.id.save_entry_btn);
-        button.setOnClickListener(saveEntryCallback);
+
 
     }
 
@@ -142,6 +144,12 @@ public class EntriesFragment extends Fragment implements AdapterView.OnItemSelec
                 description = textbox.getText().toString();
 
                 Affect moodData = new Affect(feeling, description, DateHelper.getTodayPlusDays(0));
+                if (intensity > 0) {
+                    moodData.setIntensity(intensity);
+                }
+//                if (duration > 0) {
+//                    moodData.setDuration(duration);
+//                }
 
                 mMoodViewModel.insert(moodData);
                 Log.d("Entry saved", "\n" + moodData.toString());

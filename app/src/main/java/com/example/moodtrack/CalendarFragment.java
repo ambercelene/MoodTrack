@@ -45,8 +45,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-//        startDb();
-
+        // get date from calendar
         CalendarView cal = getActivity().findViewById(R.id.calendarView);
         cal.setOnDateChangeListener(dateSelectedCallback);
         if (selectedDate != null) {
@@ -64,8 +63,8 @@ public class CalendarFragment extends Fragment {
         @Override
         public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
             selectedDate = String.format("%d-%02d-%02d", year, month, dayOfMonth);
-            Log.d("DateSelected", selectedDate);
-//            Toast.makeText(getContext(), selectedDate, Toast.LENGTH_SHORT).show();
+            Log.d("DateSelected", selectedDate);Toast.makeText(getContext(), selectedDate, Toast.LENGTH_SHORT).show();
+//
         }
     };
 
