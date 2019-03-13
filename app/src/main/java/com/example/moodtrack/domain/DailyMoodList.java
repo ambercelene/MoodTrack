@@ -26,25 +26,38 @@ public class DailyMoodList {
         typeCounts = initCounts();
     }
 
+    /**
+     * Runtime: O(1)
+     *
+     * @param entry
+     */
     public void add(Affect entry) {
         if (entry == null) return;
         list.add(entry);
         addCount(entry.getDescription());
     }
 
-    public Affect get(String key) {
+    /**
+     * Runtime: O(n), where n is number entries for a given date
+     *
+     * @param date
+     * @return
+     */
+    public Affect get(String date) {
         for (Affect current : list) {
-            if (key.equals(current.getDate())) {
+            if (date.equals(current.getDate())) {
                 return current;
             }
         }
         return null;
     }
 
+    // Runtime: O(1)
     protected LinkedList<Affect> getList() {
         return list;
     }
 
+    // Runtime: O(1)
     public int getSize() {
         return list.size();
     }
@@ -55,7 +68,7 @@ public class DailyMoodList {
 
     /**
      *
-     * Runtime: O(6)
+     * Runtime: O(n), n is the number of different moods
      *
      * @return
      */
@@ -74,7 +87,7 @@ public class DailyMoodList {
     /**
      * Returns a map of number of entries of each mood type
      *
-     * Runtime: O(n)
+     * Runtime: O(1)
      *
      * @return
      */
@@ -82,6 +95,11 @@ public class DailyMoodList {
         return typeCounts;
     }
 
+    /**
+     * Runtime: O(1)
+     *
+     * @param entryType
+     */
     private void addCount(String entryType) {
         try {
             if (!typeCounts.containsKey(entryType)) {
@@ -89,6 +107,7 @@ public class DailyMoodList {
             } else {
                 Integer i;
                 if ((i = typeCounts.get(entryType)) != null) {
+                    // had to deal with unboxing issue above
                     typeCounts.put(entryType, i + 1);
                 }
             }
@@ -96,7 +115,7 @@ public class DailyMoodList {
     }
 
     /**
-     * Runtime: O(6)
+     * Runtime: O(n), where n is the number of different moods
      *
      * @return
      */

@@ -17,21 +17,20 @@ import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
 
+    String selectedDate;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-//        HashMap<String, int> stats = new HashMap<>();
-//        stats.put("Happy", 0);
-//        int happyCount = 0;
-//
-//        if (mood.type == "Happy") {
-//            stats.put("Happy", stats.get("Happy") + 1);
-//            happyCount++;
-//
-//        }
+        // example
+        if (savedInstanceState != null) {
+            selectedDate = savedInstanceState.getString("Date");
+//            journal.getDailyEntries(selectedDate).getDailyMoodCounts();
+        }
+
         PieChart chart = getActivity().findViewById(R.id.chart);
         Log.d("PieChart", String.valueOf(chart== null) );
         return inflater.inflate(R.layout.fragment_home, null);

@@ -49,10 +49,14 @@ public class DailyMoodTable {
         return hash(date);
     }
 
+    /**
+     * Runtime: O()
+     *
+     * @param affect
+     */
     public void insert(Affect affect) {
-//        Entry entry = new Entry(affect);
-
         if (1.5 < getLoadFactor()) {
+            // resize storage if starts becoming inefficient
             resize();
         }
         int key = hash(affect.getKey());

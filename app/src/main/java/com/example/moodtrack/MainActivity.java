@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         journal = new MoodJournal();
         journal.load(mMoodViewModel.getMoodData());
 
+//        HomeFragment home = (HomeFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+//        CalendarFragment cal = (CalendarFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+//        home.selectedDate = cal.getDate();
+
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
         loadFragment(new HomeFragment());

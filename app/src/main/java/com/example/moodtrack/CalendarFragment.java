@@ -49,6 +49,9 @@ public class CalendarFragment extends Fragment {
 
         CalendarView cal = getActivity().findViewById(R.id.calendarView);
         cal.setOnDateChangeListener(dateSelectedCallback);
+        if (selectedDate != null) {
+            savedInstanceState.putString("Date", selectedDate);
+        }
 
         // bind data to text element
         subscribeUiMoods();
@@ -74,10 +77,6 @@ public class CalendarFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void startDb() {
-        moodViewModel.initDb();
-    }
-
     private void subscribeUiMoods() {
         moodViewModel.getAffectsList().observe(this, new Observer<List<Affect>>() {
             @Override
@@ -86,5 +85,9 @@ public class CalendarFragment extends Fragment {
                 adapter.setMoodData(affects);
             }
         });
+    }
+
+    public String getDate() {
+        return selectedDate;
     }
 }

@@ -16,19 +16,24 @@ public class MoodJournal {
         journal = new DailyMoodTable();
     }
 
-    public void addEntry(Affect affect) {
-        journal.insert(affect);
-    }
-
-    public LinkedList<Affect> getDailyEntries(String key) {
-        return journal.getDailyEntries(key).getList();
-    }
-
     public void load(List<Affect> affectsList) {
         for (Affect affect : affectsList) {
             journal.insert(affect);
         }
     }
+
+    public void addEntry(Affect affect) {
+        journal.insert(affect);
+    }
+
+    public LinkedList<Affect> getDailyEntriesList(String key) {
+        return journal.getDailyEntries(key).getList();
+    }
+
+    public DailyMoodList getDailyEntries(String key) {
+        return journal.getDailyEntries(key);
+    }
+
 }
 
 
